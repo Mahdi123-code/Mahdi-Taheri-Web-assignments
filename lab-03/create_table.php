@@ -14,7 +14,7 @@ $sql = "CREATE TABLE IF NOT EXISTS students (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
-// Execute it with $conn->query($sql) and show success/error message
+// Check if the table was created successfully
 if ($conn->query($sql) === TRUE) {
     echo "Table 'students' created successfully!";
 } else {

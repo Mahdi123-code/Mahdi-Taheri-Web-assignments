@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // TODO 2: Validate that fields are not empty
     if (!empty($fullName) && !empty($email) && !empty($department)) {
         
-        // TODO 1: Create mysqli connection to wis_lab
         $conn = new mysqli("localhost", "root", "", "wis_lab");
         
         if ($conn->connect_error) {
@@ -49,39 +48,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Insert Student Data</title>
     <!-- Bootstrap CSS -->
-    <link href="https://jsdelivr.net" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="container mt-5">
 
     <div style="max-width: 500px; margin: 0 auto;">
         <h2>Add New Student</h2>
         
-        <!-- TODO 5: Display Bootstrap success/error alert -->
         <?php if (!empty($alertMessage)): ?>
             <div class="alert alert-<?php echo $alertType; ?> mt-3"><?php echo $alertMessage; ?></div>
         <?php endif; ?>
 
-        <!-- Minimum Bootstrap form structure -->
         <form method="POST" class="mt-4">
             <div class="mb-3">
                 <label class="form-label">Full Name</label>
                 <input type="text" name="full_name" class="form-control" required>
             </div>
             
-            <!-- Email field -->
             <div class="mb-3">
                 <label class="form-label">Email</label>
                 <input type="email" name="email" class="form-control" required>
             </div>
             
-            <!-- Department field -->
             <div class="mb-3">
                 <label class="form-label">Department</label>
                 <input type="text" name="department" class="form-control" required>
             </div>
             
             <button type="submit" class="btn btn-primary">Save Student</button>
-            <!-- Clear/Reset button using Bootstrap class btn btn-secondary -->
             <button type="reset" class="btn btn-secondary">Clear</button>
         </form>
     </div>
