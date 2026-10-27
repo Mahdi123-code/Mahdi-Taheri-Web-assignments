@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
+
+Route::middleware('auth')->group(function () {
+    Route::post('/books', [BookController::class, 'store'])
+        ->name('books.store');
+});
 
 Route::get('/', function () {
     return view('welcome');
